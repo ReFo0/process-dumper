@@ -4,9 +4,8 @@
 
 
 
-void start_dumper(bool onoff)
+void start_dumper()
 {
-    if (onoff) {
         auto base_adress = get_baseaddress();
         auto dosheader = (PIMAGE_DOS_HEADER)((uintptr_t)base_adress);
         auto ntheader = (PIMAGE_NT_HEADERS)((uintptr_t)dosheader->e_lfanew + (uintptr_t)base_adress);
@@ -29,21 +28,15 @@ void start_dumper(bool onoff)
         std::ofstream file(dumped_name, std::ios::binary);
         file.write((char*)allocated, size);
         file.close();
-        std::cout << "dumper work completed\n";
-        std::cout << "see injected process folder\n";
-    }
-    else
-    {
-        std::cout << "dumper closed.\n";
+        std::cout << "dumper worked.\n";
     }
 }
 
-BOOL APIENTRY DllMain(HMODULE dll, DWORD call, LPVOID reserved)
+bool __stdcall DllMain(void* dll, unsigned long call, void* reserved)
 {
-    DisableThreadLibraryCalls(dll);
     if (call == 1) {
-        show_console(true);
-        start_dumper(true);
+        show_console();
+        start_dumper();
     }
     return 1;
 }
