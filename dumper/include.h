@@ -10,18 +10,16 @@ auto peb_() -> ppeb
     return (ppeb)__readgsqword(0x60);
 }
 
-auto get_baseaddress() -> HMODULE
+auto get_baseaddress() -> void*
 {
-    return (HMODULE)peb_()->ImageBaseAddress;
+    return (void*)peb_()->ImageBaseAddress;
 }
 
 
-void show_console(bool onoff)
+void show_console()
 {
-    if (onoff) {
         AllocConsole();
         freopen("CONIN$", "r", stdin);
         freopen("CONOUT$", "w", stdout);
         freopen("CONOUT$", "w", stderr);
-    }
 }
