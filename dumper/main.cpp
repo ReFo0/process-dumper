@@ -28,7 +28,7 @@ void start_dumper()
         std::ofstream file(dumped_name, std::ios::binary);
         file.write((char*)allocated, size);
         file.close();
-        std::cout << "dumper worked.\n";
+        std::cout << ":)\n";
     }
 }
 
