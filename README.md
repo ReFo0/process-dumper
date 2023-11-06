@@ -1,5 +1,8 @@
 # PE File Dumper
 
+![](https://img.shields.io/github/stars/refo0/process-dumper)
+![](https://img.shields.io/github/forks/refo0/process-dumper)
+
 This C++ code functions as a PE (Portable Executable) file dumper, allowing you to extract the entire contents of a running executable and save it as a separate file.
 
 ## Description
